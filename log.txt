@@ -1,0 +1,130 @@
+FIRST Training
+Epoch 1/10
+2026-08-22 21:00:02.517017: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:117] Plugin optimizer for device_type GPU is enabled.
+ 96/351 ━━━━━━━━━━━━━━━━━━━━ 1:18 309ms/step - accuracy: 0.5116 - loss: 0.8296/Users/shaswatshrey/Development/model/tf-env-311/lib/python3.11/site-packages/PIL/TiffImagePlugin.py:950: UserWarning: Truncated File Read
+  warnings.warn(str(msg))
+351/351 ━━━━━━━━━━━━━━━━━━━━ 119s 329ms/step - accuracy: 0.5488 - loss: 0.6921 - val_accuracy: 0.6394 - val_loss: 0.6373
+Epoch 2/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 167s 476ms/step - accuracy: 0.6548 - loss: 0.6262 - val_accuracy: 0.6939 - val_loss: 0.5981
+Epoch 3/10
+ 80/351 ━━━━━━━━━━━━━━━━━━━━ 1:54 422ms/step - accuracy: 0.6752 - loss: 0.5962
+351/351 ━━━━━━━━━━━━━━━━━━━━ 147s 418ms/step - accuracy: 0.6778 - loss: 0.6006 - val_accuracy: 0.6939 - val_loss: 0.6043
+Epoch 4/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 148s 423ms/step - accuracy: 0.6766 - loss: 0.6549 - val_accuracy: 0.5994 - val_loss: 0.7476
+Epoch 5/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 159s 452ms/step - accuracy: 0.6664 - loss: 0.8614 - val_accuracy: 0.5649 - val_loss: 3.5756
+Epoch 6/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 163s 466ms/step - accuracy: 0.6540 - loss: 1.6344 - val_accuracy: 0.7067 - val_loss: 1.9801
+Epoch 7/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 161s 458ms/step - accuracy: 0.6539 - loss: 2.9774 - val_accuracy: 0.5801 - val_loss: 3.8442
+Epoch 8/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 160s 455ms/step - accuracy: 0.6417 - loss: 3.9658 - val_accuracy: 0.6627 - val_loss: 6.6629
+Epoch 9/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 162s 461ms/step - accuracy: 0.6541 - loss: 9.3183 - val_accuracy: 0.6450 - val_loss: 8.2980
+Epoch 10/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 159s 454ms/step - accuracy: 0.6386 - loss: 3.8335 - val_accuracy: 0.5873 - val_loss: 0.7394
+20/20 ━━━━━━━━━━━━━━━━━━━━ 2s 113ms/step - accuracy: 0.6261 - loss: 0.7474
+
+Model Architecture
+
+""""
+inputs = tf.keras.layers.Input(shape=(150, 150, 3))
+x = tf.keras.layers.Conv2D(32, (3,3), activation='relu')(inputs)
+x = tf.keras.layers.Conv2D(64, (3,3), activation='relu')(x)
+x = tf.keras.layers.MaxPool2D(2,2)(x)
+
+x = tf.keras.layers.Conv2D(64, (3,3), activation='relu')(x)
+x = tf.keras.layers.Conv2D(128, (3,3), activation='relu')(x)
+x = tf.keras.layers.MaxPool2D(2,2)(x)
+
+x = tf.keras.layers.Conv2D(128, (3,3), activation='relu')(x)
+x = tf.keras.layers.Conv2D(256, (3,3), activation='relu')(x)
+x = tf.keras.layers.MaxPool2D(2,2)(x)
+
+x = tf.keras.layers.Flatten()(x)
+x = tf.keras.layers.Dense(1024, activation='relu')(x)
+x = tf.keras.layers.Dense(2, activation='softmax')(x)
+
+model = Model(inputs=inputs, outputs=x)
+""""
+
+SECOND Training
+Epoch 1/10
+2026-08-22 21:28:26.184682: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:117] Plugin optimizer for device_type GPU is enabled.
+ 56/351 ━━━━━━━━━━━━━━━━━━━━ 1:11 241ms/step - accuracy: 0.4845 - loss: 0.6953/Users/shaswatshrey/Development/model/tf-env-311/lib/python3.11/site-packages/PIL/TiffImagePlugin.py:950: UserWarning: Truncated File Read
+  warnings.warn(str(msg))
+351/351 ━━━━━━━━━━━━━━━━━━━━ 99s 281ms/step - accuracy: 0.5543 - loss: 0.6881 - val_accuracy: 0.5473 - val_loss: 0.6860
+Epoch 2/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 168s 478ms/step - accuracy: 0.6180 - loss: 0.6522 - val_accuracy: 0.5873 - val_loss: 0.7050
+Epoch 3/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 131s 374ms/step - accuracy: 0.6590 - loss: 0.6232 - val_accuracy: 0.6963 - val_loss: 0.6353
+Epoch 4/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 132s 376ms/step - accuracy: 0.6112 - loss: 0.6863 - val_accuracy: 0.6707 - val_loss: 0.6088
+Epoch 5/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 134s 381ms/step - accuracy: 0.6693 - loss: 0.6252 - val_accuracy: 0.7075 - val_loss: 0.6033
+Epoch 6/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 130s 369ms/step - accuracy: 0.6891 - loss: 0.5960 - val_accuracy: 0.6627 - val_loss: 0.6633
+Epoch 7/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 129s 369ms/step - accuracy: 0.7010 - loss: 0.5804 - val_accuracy: 0.6178 - val_loss: 0.7796
+Epoch 8/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 127s 362ms/step - accuracy: 0.7070 - loss: 0.5831 - val_accuracy: 0.6026 - val_loss: 0.8879
+Epoch 9/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 128s 364ms/step - accuracy: 0.6944 - loss: 0.6178 - val_accuracy: 0.6362 - val_loss: 0.7114
+Epoch 10/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 130s 371ms/step - accuracy: 0.6994 - loss: 0.6329 - val_accuracy: 0.6370 - val_loss: 0.7091
+20/20 ━━━━━━━━━━━━━━━━━━━━ 2s 110ms/step - accuracy: 0.6373 - loss: 0.7003
+
+Model Architecture
+""""
+
+inputs = tf.keras.layers.Input(shape=(150, 150, 3))
+x = tf.keras.layers.Conv2D(32, (3,3), activation='relu')(inputs)
+x = tf.keras.layers.Conv2D(64, (3,3), activation='relu')(x)
+x = tf.keras.layers.MaxPool2D(2,2)(x)
+
+x = tf.keras.layers.Conv2D(64, (3,3), activation='relu')(x)
+x = tf.keras.layers.Conv2D(128, (3,3), activation='relu')(x)
+x = tf.keras.layers.MaxPool2D(2,2)(x)
+
+x = tf.keras.layers.Conv2D(128, (3,3), activation='relu')(x)
+x = tf.keras.layers.Conv2D(256, (3,3), activation='relu')(x)
+x = tf.keras.layers.GlobalAveragePooling2D()(x)
+
+
+x = tf.keras.layers.Dense(1024, activation='relu')(x)
+x = tf.keras.layers.Dense(2, activation='softmax')(x)
+
+model = Model(inputs=inputs, outputs=x)
+
+""""
+
+THIRD Training
+Epoch 1/10
+2026-08-22 21:00:02.517017: I tensorflow/core/grappler/optimizers/custom_graph_optimizer_registry.cc:117] Plugin optimizer for device_type GPU is enabled.
+ 96/351 ━━━━━━━━━━━━━━━━━━━━ 1:18 309ms/step - accuracy: 0.5116 - loss: 0.8296/Users/shaswatshrey/Development/model/tf-env-311/lib/python3.11/site-packages/PIL/TiffImagePlugin.py:950: UserWarning: Truncated File Read
+  warnings.warn(str(msg))
+351/351 ━━━━━━━━━━━━━━━━━━━━ 119s 329ms/step - accuracy: 0.5488 - loss: 0.6921 - val_accuracy: 0.6394 - val_loss: 0.6373
+Epoch 2/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 167s 476ms/step - accuracy: 0.6548 - loss: 0.6262 - val_accuracy: 0.6939 - val_loss: 0.5981
+Epoch 3/10
+ 80/351 ━━━━━━━━━━━━━━━━━━━━ 1:54 422ms/step - accuracy: 0.6752 - loss: 0.5962
+351/351 ━━━━━━━━━━━━━━━━━━━━ 147s 418ms/step - accuracy: 0.6778 - loss: 0.6006 - val_accuracy: 0.6939 - val_loss: 0.6043
+Epoch 4/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 148s 423ms/step - accuracy: 0.6766 - loss: 0.6549 - val_accuracy: 0.5994 - val_loss: 0.7476
+Epoch 5/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 159s 452ms/step - accuracy: 0.6664 - loss: 0.8614 - val_accuracy: 0.5649 - val_loss: 3.5756
+Epoch 6/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 163s 466ms/step - accuracy: 0.6540 - loss: 1.6344 - val_accuracy: 0.7067 - val_loss: 1.9801
+Epoch 7/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 161s 458ms/step - accuracy: 0.6539 - loss: 2.9774 - val_accuracy: 0.5801 - val_loss: 3.8442
+Epoch 8/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 160s 455ms/step - accuracy: 0.6417 - loss: 3.9658 - val_accuracy: 0.6627 - val_loss: 6.6629
+Epoch 9/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 162s 461ms/step - accuracy: 0.6541 - loss: 9.3183 - val_accuracy: 0.6450 - val_loss: 8.2980
+Epoch 10/10
+351/351 ━━━━━━━━━━━━━━━━━━━━ 159s 454ms/step - accuracy: 0.6386 - loss: 3.8335 - val_accuracy: 0.5873 - val_loss: 0.7394
+20/20 ━━━━━━━━━━━━━━━━━━━━ 2s 113ms/step - accuracy: 0.6261 - loss: 0.7474
+
+Same Model Architecture as the Second one.
+
+THE END!
