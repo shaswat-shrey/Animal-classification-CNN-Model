@@ -1,4 +1,4 @@
-from main import validation_generator, class_names, r
+from main import validation_generator, class_names
 
 import tensorflow as tf
 import numpy as np
@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 model = tf.keras.models.load_model("cats_dogs_model.keras")
-
+model.summary()
 def plot_prediction(generator, n_images):
     """
     Test the model on random predictions
@@ -41,6 +41,3 @@ def plot_prediction(generator, n_images):
 
 plot_prediction(validation_generator, 20)
 # plot_prediction(train_generator, 21)
-
-results = pd.DataFrame(r.history)
-results.tail()

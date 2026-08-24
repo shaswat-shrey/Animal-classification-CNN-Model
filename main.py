@@ -110,6 +110,10 @@ x = tf.keras.layers.MaxPool2D(2,2)(x)
 
 x = tf.keras.layers.Conv2D(128, (3,3), activation='relu')(x)
 x = tf.keras.layers.Conv2D(256, (3,3), activation='relu')(x)
+x = tf.keras.layers.MaxPool2D(2,2)(x)
+
+x = tf.keras.layers.Conv2D(256, (3,3), activation='relu')(x)
+x = tf.keras.layers.Conv2D(512, (3,3), activation='relu')(x)
 x = tf.keras.layers.GlobalAveragePooling2D()(x)
 
 
@@ -130,7 +134,7 @@ if __name__ == "__main__":
 
     r = model.fit(
         train_generator,
-        epochs=10,
+        epochs=2,
         validation_data=validation_generator
     )
 
